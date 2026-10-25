@@ -427,7 +427,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_geode_launcher_utils_GeodeUtils_inter
     auto leftTriggerArr = extractFloatArray(env, leftTrigger);
     auto rightTriggerArr = extractFloatArray(env, rightTrigger);
 
-    std::vector<AndroidJoystickInput::Data> inputs(leftXArr.size());
+    std::vector<AndroidJoystickInput::Data> inputs;
+    inputs.reserve(leftXArr.size());
 
     for (int i = 0; i < leftXArr.size(); i++) {
         inputs.emplace_back(
