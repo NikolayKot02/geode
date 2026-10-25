@@ -379,7 +379,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_geode_launcher_utils_GeodeUtils_inter
     auto xArr = extractFloatArray(env, xs);
     auto yArr = extractFloatArray(env, ys);
 
-    std::vector<AndroidTouchInput::Data> touches(idArr.size());
+    std::vector<AndroidTouchInput::Data> touches;
+    touches.reserve(idArr.size());
 
     // sometimes i wish we had c++23
     for (int i = 0; i < idArr.size(); i++) {
